@@ -119,7 +119,7 @@ def ofdm_simulate(codeword, channelResponse, SNRdb):
         OFDM_withCP_cordword = Clipping(OFDM_withCP_cordword, CR)
     OFDM_RX_codeword = channel(OFDM_withCP_cordword, channelResponse, SNRdb)
     OFDM_RX_noCP_codeword = removeCP(OFDM_RX_codeword)
-    #OFDM_RX_noCP_codeword = DFT(OFDM_RX_noCP_codeword)  ?
+    #OFDM_RX_noCP_codeword = DFT(OFDM_RX_noCP_codeword)  ?don't really understand this step
     return np.concatenate((np.concatenate((np.real(OFDM_RX_noCP), np.imag(OFDM_RX_noCP))),
                            np.concatenate((np.real(OFDM_RX_noCP_codeword), np.imag(OFDM_RX_noCP_codeword))))), abs(
         channelResponse)
